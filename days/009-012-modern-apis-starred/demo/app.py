@@ -11,17 +11,22 @@ def _load_cars_data():
     with open('cars.json') as f:
         cars = json.loads(f.read())
         return {car["id"]: car for car in cars}
+        # dictionary of cars with key 'id' and value car dictionary
+        # e.g. {1: {'id': 1, 'manufacturer': 'Mercedes-Benz', ...}
+        # this allows retrieval by car id and faster processing / lookup
 
 
-cars = _load_cars_data()
+cars = _load_cars_data()  # one time task
+# now we can get unique manufacturers to help with validation
 VALID_MANUFACTURERS = set([car["manufacturer"]
                           for car in cars.values()])
 CAR_NOT_FOUND = 'Car not found'
-
+breakpoint()
 # definition
 
 
 class Car(types.Type):
+    # validators comes from apistar
     id = validators.Integer(allow_null=True)  # assign in POST
     manufacturer = validators.String(enum=list(VALID_MANUFACTURERS))
     model = validators.String(max_length=50)
@@ -71,6 +76,7 @@ def delete_car(car_id: int) -> JSONResponse:
 
 
 routes = [
+    # Routes require end point, method and handler
     Route('/', method='GET', handler=list_cars),
     Route('/', method='POST', handler=create_car),
     Route('/{car_id}/', method='GET', handler=get_car),
