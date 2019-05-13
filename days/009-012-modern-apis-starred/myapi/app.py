@@ -47,45 +47,45 @@ def list_ips() -> List[Ip]:
 
 
 def create_ip(ip: Ip) -> JSONResponse:
-    car_id = len(cars) + 1  # ids are sequential
-    ip.id = car_id
-    cars[car_id] = ip  # car is a dictionary containing the car info
+    ip_id = len(ips) + 1  # ids are sequential
+    ip.id = ip_id
+    ips[ip_id] = ip  # car is a dictionary containing the car info
     return JSONResponse(Ip(ip), status_code=201)  # 201 code is created
 
 
-def get_car(car_id: int) -> JSONResponse:
-    car = cars.get(car_id)
-    if not car:
-        error = {'error': CAR_NOT_FOUND} # best practice is to return error as a dictionary
+def get_ip(ip_id: int) -> JSONResponse:
+    ip = ips.get(ip_id)
+    if not ip:
+        error = {'error': IP_NOT_FOUND} # best practice is to return error as a dictionary
         return JSONResponse(error, status_code=404)  # status 404 is not found
 
-    return JSONResponse(Ip(car), status_code=200)
+    return JSONResponse(Ip(ip), status_code=200)
     # 200 is OK
-    # Car(car) creates a Car object from the car with id = car_id
+    # Ip(ip) creates a Ip object from the ip with id = ip_id
 
 
-def update_car(car_id: int, car: Ip) -> JSONResponse:
-    #  update_car is the method when routed with car_id in the url and method is 'put'
+def update_ip(ip_id: int, ip: Ip) -> JSONResponse:
+    #  update_ip is the method when routed with ip_id in the url and method is 'put'
     #  car_id is the integer from the url
     #  car is the car object with updated mandatory fields and optional vin. for this demo this information is added
     #  using Postman
     #  check if cars dictionary has key = equal to car_id
-    if not cars.get(car_id):
-        error = {'error': CAR_NOT_FOUND}
+    if not ips.get(ip_id):
+        error = {'error': IP_NOT_FOUND}
         return JSONResponse(error, status_code=404)
 
-    car.id = car_id
-    cars[car_id] = car
-    return JSONResponse(Ip(car), status_code=200)
+    ip.id = ip_id
+    ips[ip_id] = ip
+    return JSONResponse(Ip(ip), status_code=200)
 
 
-def delete_car(car_id: int) -> JSONResponse:
+def delete_ip(ip_id: int) -> JSONResponse:
     # similar to update_car
-    if not cars.get(car_id):
-        error = {'error': CAR_NOT_FOUND}
+    if not ips.get(ip_id):
+        error = {'error': IP_NOT_FOUND}
         return JSONResponse(error, status_code=404)
 
-    del cars[car_id]
+    del ips[ip_id]
     return JSONResponse({}, status_code=204)
 
 
@@ -93,9 +93,9 @@ routes = [
     # Routes require end point, method and handler
     Route('/', method='GET', handler=list_ips),
     Route('/', method='POST', handler=create_ip),
-    Route('/{car_id}/', method='GET', handler=get_car),
-    Route('/{car_id}/', method='PUT', handler=update_car),
-    Route('/{car_id}/', method='DELETE', handler=delete_car),
+    Route('/{ip_id}/', method='GET', handler=get_ip),
+    Route('/{ip_id}/', method='PUT', handler=update_ip),
+    Route('/{ip_id}/', method='DELETE', handler=delete_ip),
 ]
 
 app = App(routes=routes)
