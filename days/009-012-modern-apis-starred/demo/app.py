@@ -1,5 +1,5 @@
 import json
-from typing import List # used to add type check to list output in definitions
+from typing import List  # used to add type check to list output in definitions
 
 from apistar import App, Route, types, validators
 from apistar.http import JSONResponse

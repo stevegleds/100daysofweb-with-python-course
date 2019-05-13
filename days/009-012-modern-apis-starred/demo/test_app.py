@@ -46,6 +46,8 @@ def test_create_car():
     assert response.json() == expected
     assert len(cars) == 1002
 
+    breakpoint()
+
 
 def test_create_car_missing_fields():
     data = {'key': 1}
@@ -138,3 +140,9 @@ def test_delete_car():
         assert response.status_code == 404  # car gone
 
     assert len(cars) == car_count - 3
+
+print('test list')
+test_list_cars()
+print('test create')
+test_create_car()
+
