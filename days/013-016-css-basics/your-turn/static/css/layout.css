@@ -21,8 +21,16 @@ body {
     margin-right: 25px;
 }
 
-#podcast {
+.podcast {
     color:yellow;
+}
+
+.podcast.quote {
+    color: red;
+}
+
+a.podcast.quote:hover {
+    color: white;
 }
 
 /* style page hyperlinks bold */
