@@ -11,6 +11,7 @@ def index():
 def my_results():
     return render_template('my_results.html')
 
+
 @app.route('/mypaceresults')
 def my_pace_results():
     return render_template('my_pace_results.html')
