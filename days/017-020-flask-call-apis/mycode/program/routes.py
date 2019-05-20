@@ -23,7 +23,20 @@ def chuck():
     return render_template('chuck.html', joke=joke)
 
 
+@app.route('/numbers')
+def numbers():
+    number = get_numbers()
+    return render_template('numbers.html', number=number)
+
+
 def get_chuck_joke():
     r = requests.get('https://api.chucknorris.io/jokes/random')
     data = r.json()
     return data['value']
+
+
+def get_numbers():
+    r = requests.get('http://numbersapi.com/random/year?json')
+    data = r.json()
+    print(data)
+    return data['text']
