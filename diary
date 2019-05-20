@@ -1,3 +1,11 @@
+20 May 2019
+Back on PC and 'no flask' error. Simply installed Flask package (opened this 'day' in new window and installed package).
+All OK
+Created Chuck Norris joke api page.
+Next steps:
+Add menu to link to page
+Find new api from https://medium.com/@vicbergquist/18-fun-apis-for-your-next-project-8008841c7be9
+Implement
 19 May 2019
 Tried to get apis and Flask to work on laptop. Struggled.
 Eventually used existinig venv for the preivous flask exercise .
