@@ -1,4 +1,6 @@
 21 May 2019
+Successfully added error checking but unable to get more info from pokemon api
+21 May 2019
 Working with Pokemon api using if and loops in html templates
 Realised that {{}} is needed for variables and {%%} for control statements
 20 May 2019

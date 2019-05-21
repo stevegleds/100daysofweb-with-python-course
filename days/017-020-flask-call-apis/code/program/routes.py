@@ -6,6 +6,7 @@ import requests
 
 timenow = str(datetime.today())
 
+
 @app.route('/')
 @app.route('/index')
 def index():
