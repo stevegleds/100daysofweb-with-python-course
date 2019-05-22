@@ -42,7 +42,7 @@ def pokemon():
         else:
             error = "There is no " + colour + " Pokemon."
             return render_template('pokemon.html', error=error)
-
+    return render_template('pokemon.html')
 
 def get_chuck_joke():
     r = requests.get('https://api.chucknorris.io/jokes/random')
