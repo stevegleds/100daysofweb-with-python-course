@@ -32,12 +32,17 @@ def numbers():
 @app.route('/pokemon', methods=['GET', 'POST'])
 def pokemon():
     pokemon = []  # to store list of pokemon names
+    allowed_colours = ['yellow', 'blue', 'red', 'black']
     if request.method == 'POST' and 'pokecolour' in request.form:  # user has POSTed a colour in the user form
         colour = request.form.get('pokecolour')  # this is link from front end to backend
-        pokemon = get_poke_colour(colour)  # get_poke_colour returns list of names
-        pokemon_count = 12
-    return render_template('pokemon.html', pokemon=pokemon, pokemon_count=pokemon_count)
-
+        if colour in allowed_colours:
+            pokemon = get_poke_colour(colour)  # get_poke_colour returns list of names
+            #  pokemon_count = len(pokemon)
+            return render_template('pokemon.html', pokemon=pokemon, pokemon_count=len(pokemon), colour=colour)
+        else:
+            error = "There is no " + colour + " Pokemon."
+            return render_template('pokemon.html', error=error)
+    return render_template('pokemon.html')
 
 def get_chuck_joke():
     r = requests.get('https://api.chucknorris.io/jokes/random')
@@ -61,3 +66,5 @@ def get_poke_colour(colour):  # colour entered by user form
     for i in pokedata['pokemon_species']:  # 'name' is key in mini dictionary under 'pokemon_species' dictionary
         pokemon.append(i['name'])
     return sorted(pokemon)
+
+

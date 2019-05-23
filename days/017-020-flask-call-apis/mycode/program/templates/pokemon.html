@@ -17,17 +17,20 @@
     <br>
     <br>
     <div>
+        {% if error %}
+        <P>{{ error }}</P>
+        {% endif %}
         {% if pokemon %}
         <table class="mui-table mui-table--bordered">
 	        <thead>
 		    <tr>
-		        <th>These are {{ pokemon_count }} the Pokemons found with your colour</th>
+                <th>These are the {{ pokemon_count }} Pokemons found with the colour <span style="color:{{ colour }}"> {{ colour }}</span></th>
 		    </tr>
 			</thead>
 	        <tbody>
 		    {% for i in pokemon %}
 		        <tr>
-			    <td>{{ i }}</td>
+			    <td style="color:{{ colour }}">{{ i }}</td>
 			</tr>
 		    {% endfor %}
 		</tbody>
