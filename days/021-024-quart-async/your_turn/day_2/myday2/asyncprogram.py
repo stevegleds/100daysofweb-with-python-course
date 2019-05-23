@@ -6,6 +6,7 @@ import aiohttp
 # todo this is not working!!!
 # very poor explanation of what goes where from the readme file.
 
+
 async def get_html(episode_number: int) -> str:
     print(Fore.YELLOW + f"Getting HTML for episode {episode_number}", flush=True)
 
