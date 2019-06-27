@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Can you drive?</title>
+  <title>Guess my secret number</title>
 </head>
 <body>
   <script type="text/javascript">
@@ -21,8 +21,34 @@
   }
 
   const secretNumber = getRandomInt(1, 15);
-  // you code
 
+  // you code
+  console.log('Guess the secret number: ', secretNumber);
+  while(true){
+    let guess = prompt('Enter your guess between 1 and 15: ', secretNumber);
+    console.log(parseInt(guess));
+    console.log(typeof parseInt(guess));
+    if(guess === null || guess === 'q'){
+      console.log('Bye');
+      break;
+    }
+    guess = parseInt(guess);
+    if(isNaN(guess)){
+      console.log('Not a number, please try again');
+      continue;
+    }
+    var result = 'temp'
+    if(guess === secretNumber){
+      console.log('Well done. You guessed it');
+      break;
+    } else if(guess > secretNumber){
+      result='high';
+    } else {
+      result='low';
+    }
+  
+    console.log('Sorry. Your guess is too', result)
+  }
   </script>
 </body>
 </html>
