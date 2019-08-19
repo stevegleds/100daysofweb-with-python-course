@@ -6,8 +6,8 @@ smtp_server.ehlo()
 
 smtp_server.starttls()
 
-smtp_server.login('<gmail-address>', '')
+smtp_server.login('stevegleds@gmail.com', 'tgdm mcpa jqkm hpiq')
 
-smtp_server.sendmail('<from-email>@gmail.com', '<to-email>@<domain>', 'Subject: Hello from Heroku!\nTest email from Heroku. Cheers!')
+smtp_server.sendmail('<stevegleds@gmail.com', '<steve@pcresolver.es>', 'Subject: Hello from Heroku!\nTest email from my Heroku test app. Cheers! \nSteve')
 
 smtp_server.quit()
